@@ -1,0 +1,29 @@
+Procedure Division.
+Main Para.
+    Perform Init Para
+    Perform Process Para Until End of File
+    Perform End Para
+    Stop Run.
+Init Para.
+    Sort the File
+    Open the Files
+    Perform Heading Para
+    Read the first Record
+    Move the Key Field to Temp Field
+Process Para
+    If Key Field = Temp Field
+       continue
+    Else
+       Perform Change Para
+    End If
+    Print the Detail Line
+    Read the Next Record
+Change Para
+    Print the Total Line
+    Move Key Field to Temp Field
+    Perform Heading Para
+Heading Para
+    Print the Heading Lines
+End Para
+    Print the Total Line
+    Close Files

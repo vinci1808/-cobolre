@@ -1,0 +1,34 @@
+INIT-PARA.
+    Sort the Transaction File on Prod Code
+    Open Input Tran File
+    Open I-O Prod Master.
+    PERFORM READ-TRAN
+    Move the Prod Code to Temp Code
+    PERFORM READ-MASTER
+PROCESS-PARA.
+    if prod code = temp code
+	next sentence
+    else
+	PERFORM PROD-CHANGE-PARA
+    end-if.
+    compute value = qty * price
+    Move fields to detail line & print
+    You need to ensure that the Balance doesn't drop below Zero
+    if tran-type = buy
+	compute WS qty = WS Qty + qty from Tran File
+    else
+    if tran-type = sell
+	compute WS qty = ws qty - qty from tran File
+    end-if
+    PERFORM READ-TRAN.
+PROD-CHANGE-PARA.
+    Print the Closing Balance
+    Update the Closing Balance in Prod Master & Rewrite record
+    Move Prod Code to Temp Code
+    PERFORM READ-MASTER.
+READ-MASTER.
+    Use Prod Code from Tran File to Read Prod Master
+    Use the Stock Qty as Opening Balance for that Prod Code
+    Move the Stock Qty to WS Qty
+
+..............
